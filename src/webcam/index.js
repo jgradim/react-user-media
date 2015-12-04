@@ -1,9 +1,11 @@
-class Webcam extends React.Component {
+import { Component, PropTypes } from "react";
+
+class Webcam extends Component {
   static propTypes = {
-    audio: React.PropTypes.bool,
-    width: React.PropTypes.number,
-    height: React.PropTypes.number,
-    captureFormat: React.PropTypes.oneOf([
+    audio: PropTypes.bool,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    captureFormat: PropTypes.oneOf([
       "image/png",
       "image/jpeg",
       "image/webp"
