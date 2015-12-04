@@ -1,5 +1,3 @@
-import React from "react";
-
 class Webcam extends React.Component {
   static propTypes = {
     audio: React.PropTypes.bool,
@@ -91,7 +89,7 @@ class Webcam extends React.Component {
           video.src = stream;
         }
 
-        this.mediaStream = stream;
+        this._mediaStream = stream;
 
         this.setState({
           hasUserMedia: true,
@@ -114,6 +112,8 @@ class Webcam extends React.Component {
     this._captureCanvas = document.createElement("canvas");
     this._captureCanvas.width = this.props.width;
     this._captureCanvas.height = this.props.height;
+
+    return this._captureCanvas;
   }
 
   //---------------------------------------------------------------------------
