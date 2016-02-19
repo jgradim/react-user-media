@@ -9,7 +9,9 @@ class Webcam extends Component {
       "image/png",
       "image/jpeg",
       "image/webp"
-    ])
+    ]),
+    onSuccess: PropTypes.func,
+    onFailure: PropTypes.func,
   };
 
   static defaultProps = {
@@ -97,10 +99,18 @@ class Webcam extends Component {
           hasUserMedia: true,
           userMediaRequested: true
         });
+
+        if (this.props.onSuccess) {
+          this.props.onSuccess();
+        }
       },
       (error) => {
-        console.log("An error occured while requesting user media");
-        throw(error);
+        if (this.props.onFailure) {
+          this.props.onFailure(error);
+        } else {
+          console.log("An error occured while requesting user media");
+          throw(error);
+        }
       }
     );
 
