@@ -43,10 +43,12 @@ See the `examples` folder for more in-depth examples.
 
 #### Props
 
-| **Prop**        | **Type** | **Default**   | 
-|-----------------|----------|---------------|
-| `audio`         | `bool`   | `true`        | 
-| `width`         | `number` | `640`         | 
-| `height`        | `number` | `480`         | 
-| `captureFormat` | `string` | `"image/png"` | 
+| **Prop**        | **Type** | **Default**                  | 
+|-----------------|----------|------------------------------|
+| `audio`         | `bool`   | `true`                       | 
+| `width`         | `number` | `640`                        | 
+| `height`        | `number` | `480`                        | 
+| `captureFormat` | `string` | `"image/png"`                | 
+| `onSuccess`     | `func`   | `() => {}`                   |
+| `onFailure`     | `func`   | `(error) => { throw error }` |
 
