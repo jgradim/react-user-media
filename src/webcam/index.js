@@ -18,7 +18,12 @@ class Webcam extends Component {
     audio: true,
     width: 640,
     height: 480,
-    captureFormat: "image/png"
+    captureFormat: "image/png",
+    onSuccess: (() => {}),
+    onFailure: ((error) => {
+      console.log("An error occured while requesting user media");
+      throw(error);
+    }),
   };
 
   static _mediaStream = null;
@@ -100,17 +105,10 @@ class Webcam extends Component {
           userMediaRequested: true
         });
 
-        if (this.props.onSuccess) {
-          this.props.onSuccess();
-        }
+        this.props.onSuccess();
       },
       (error) => {
-        if (this.props.onFailure) {
-          this.props.onFailure(error);
-        } else {
-          console.log("An error occured while requesting user media");
-          throw(error);
-        }
+        this.props.onFailure(error);
       }
     );
 
