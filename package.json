@@ -1,6 +1,6 @@
 {
   "name": "react-user-media",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React components for webcam and audio",
   "main": "build/react-user-media.js",
   "scripts": {
