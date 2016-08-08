@@ -90,7 +90,7 @@ class Webcam extends Component {
     navigator.getUserMedia(
       constraints,
       (stream) => {
-        const video = this.refs.video;
+        const video = this._video;
 
         if (window.URL) {
           video.src = window.URL.createObjectURL(stream);
@@ -138,7 +138,7 @@ class Webcam extends Component {
       const canvas = this._getCanvas();
       const ctx = canvas.getContext("2d");
 
-      ctx.drawImage(this.refs.video, 0, 0, width, height);
+      ctx.drawImage(this._video, 0, 0, width, height);
 
       return canvas.toDataURL(captureFormat);
     }
@@ -155,7 +155,7 @@ class Webcam extends Component {
       <video
         width={width}
         height={height}
-        ref="video"
+        ref={{c} => this._video = c}
         autoPlay
       />
     )
