@@ -130,9 +130,9 @@ class Webcam extends Component {
   // External methods
   //---------------------------------------------------------------------------
 
-  captureScreenshot() {
+  captureCanvas() {
     const { hasUserMedia, userMediaRequested } = this.state;
-    const { width, height, captureFormat } = this.props;
+    const { width, height } = this.props;
 
     if (hasUserMedia && userMediaRequested) {
       const canvas = this._getCanvas();
@@ -140,6 +140,14 @@ class Webcam extends Component {
 
       ctx.drawImage(this._video, 0, 0, width, height);
 
+      return canvas
+    }
+  }
+
+  captureScreenshot() {
+    const { captureFormat } = this.props;
+    const canvas = this.captureCanvas()
+    if (canvas) {
       return canvas.toDataURL(captureFormat);
     }
   }
