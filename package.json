@@ -4,9 +4,9 @@
   "description": "React components for webcam and audio",
   "main": "build/react-user-media.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --content-base examples --host 0.0.0.0 --history-api-fallback --config webpack.dev.config.babel.js",
-    "build": "./node_modules/.bin/webpack -p --config webpack.config.babel.js",
-    "lint": "./node_modules/.bin/eslint src",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base examples --host 0.0.0.0 --history-api-fallback --config webpack.dev.config.babel.js",
+    "build": "webpack -p --config webpack.config.babel.js",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

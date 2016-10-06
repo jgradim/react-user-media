@@ -140,7 +140,7 @@ class Webcam extends Component {
 
       ctx.drawImage(this._video, 0, 0, width, height);
 
-      return canvas
+      return canvas;
     }
   }
 
