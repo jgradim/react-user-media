@@ -46,6 +46,7 @@ See the `examples` folder for more in-depth examples.
 | **Prop**        | **Type** | **Default**                  | 
 |-----------------|----------|------------------------------|
 | `audio`         | `bool`   | `true`                       | 
+| `video`         | `bool`   | `true`                       | 
 | `width`         | `number` | `640`                        | 
 | `height`        | `number` | `480`                        | 
 | `captureFormat` | `string` | `"image/png"`                | 

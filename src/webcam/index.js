@@ -16,6 +16,7 @@ class Webcam extends Component {
 
   static defaultProps = {
     audio: true,
+    video: true,
     width: 640,
     height: 480,
     captureFormat: "image/png",
@@ -58,7 +59,7 @@ class Webcam extends Component {
   }
 
   componentWillUnmount() {
-    this._mediaStream.getTracks().forEach((track) => track.stop());
+    this._mediaStream && this._mediaStream.getTracks().forEach((track) => track.stop());
   }
 
   //---------------------------------------------------------------------------
@@ -82,10 +83,10 @@ class Webcam extends Component {
       navigator.msGetUserMedia
     );
 
-    let constraints = {
-      video: true,
-      audio: this.props.audio
-    }
+    const constraints = {
+      video: this.props.video,
+      audio: this.props.audio,
+    };
 
     navigator.getUserMedia(
       constraints,
