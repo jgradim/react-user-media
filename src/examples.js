@@ -15,8 +15,17 @@ class Examples extends React.Component {
 
   takeScreenshot() {
     this.setState({
-      screenshot: this.refs.webcam.captureScreenshot()
+      screenshot: this.webcam.captureScreenshot()
     })
+  }
+
+  takeBinaryScreenshot() {
+    this.webcam.captureBlob((blob) => {
+      const imageUrl = URL.createObjectURL(blob);
+      this.setState({
+        screenshot: imageUrl,
+      });
+    });
   }
 
   toggleMount() {
@@ -25,7 +34,7 @@ class Examples extends React.Component {
 
   render() {
     const webcam = this.state.mounted ?
-      <Webcam ref="webcam" audio={false} /> :
+      <Webcam ref={(ref) => this.webcam = ref} audio={false} /> :
       null;
 
     const btnLabel = this.state.mounted ?
@@ -37,8 +46,16 @@ class Examples extends React.Component {
         <button onClick={this.toggleMount.bind(this)}>{btnLabel}</button>
         <div>
           {webcam}
-          <button onClick={this.takeScreenshot.bind(this)}>Take Screenshot</button>
-          <img ref="capture" src={this.state.screenshot} />
+          <br />
+          <button onClick={this.takeScreenshot.bind(this)}>
+            Take Screenshot (As a base64 data URL)
+          </button>
+          <br />
+          <button onClick={this.takeBinaryScreenshot.bind(this)}>
+            Take Screenshot (As a binary blob)
+          </button>
+          <br />
+          <img src={this.state.screenshot} />
         </div>
       </div>
     )
