@@ -7,23 +7,20 @@ const config = {
     path: path.resolve(__dirname, "build"),
     filename: "react-user-media.js",
     library: "react-user-media",
-    libraryTarget: "umd"
+    libraryTarget: "umd",
   },
   resolve: {
-    alias: {},
-    extensions: ["", ".js"] // allow require without extension
+    extensions: [".js"], // allow require without extension
   },
   plugins: [
-    new WebpackNotifierPlugin({ title: "react-user-media" })
+    new WebpackNotifierPlugin({ title: "react-user-media" }),
   ],
   module: {
-    preLoaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "eslint" }
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "eslint-loader", enforce: "pre" },
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
     ],
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel" }
-    ]
-  }
+  },
 };
 
 export default config;
