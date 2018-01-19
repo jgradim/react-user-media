@@ -29,7 +29,7 @@ class Examples extends React.Component {
   }
 
   toggleMount() {
-    this.setState({ mounted: false });
+    this.setState({ mounted: !this.state.mounted });
   }
 
   render() {

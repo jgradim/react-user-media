@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Webcam extends Component {
   static propTypes = {
@@ -23,7 +24,7 @@ class Webcam extends Component {
     onSuccess: (() => {}),
     onFailure: ((error) => {
       console.error("An error occured while requesting user media");
-      throw(error);
+      throw error;
     }),
   };
 

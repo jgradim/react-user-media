@@ -1,18 +1,21 @@
 {
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
   },
 
   "parser": "babel-eslint",
 
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+    },
+  },
+
   "plugins": [
-    "react"
+    "react",
   ],
 
-  "ecmaFeatures": {
-    "jsx": true
-  },
 
   "rules": {
     // For a complete reference, check out http://eslint.org/docs/rules/
@@ -86,6 +89,8 @@
 
     "key-spacing": [2, { "beforeColon": false, "afterColon": true }],
 
+    "keyword-spacing": [2],
+
     "new-cap": 2,
 
     "no-lonely-if": 2,
@@ -111,7 +116,6 @@
     "quotes": [2, "double"],
 
     // Enforce whitespace for visual clarity.
-    "space-after-keywords": [2, "always"],
     "spaced-comment": [2, "always", { "exceptions": ["-"] }],
 
     //-------------------------------------------------------------------------
@@ -144,10 +148,9 @@
     "react/no-unknown-property": 2,
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 2,
-    "react/wrap-multilines": 2,
 
     // Potential issue in React ESLint package- receiving 'Can't add property
     // react, object is not extensible' when used with eslint-loader.
-    "react/prop-types": 0
-  }
+    "react/prop-types": 0,
+  },
 }

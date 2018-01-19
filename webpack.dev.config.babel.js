@@ -6,23 +6,20 @@ const config = {
   entry: path.resolve(__dirname, "src/examples.js"),
   output: {
     path: path.resolve(__dirname, "examples"),
-    filename: "examples.js"
+    filename: "examples.js",
   },
   resolve: {
-    alias: {},
-    extensions: ["", ".js"] // allow require without extension
+    extensions: [".js"], // allow require without extension
   },
   plugins: [
-    new WebpackNotifierPlugin({ title: "react-user-media" })
+    new WebpackNotifierPlugin({ title: "react-user-media" }),
   ],
   module: {
-    preLoaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "eslint" }
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "eslint-loader", enforce: "pre" },
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
     ],
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel" }
-    ]
-  }
+  },
 };
 
 export default config;
