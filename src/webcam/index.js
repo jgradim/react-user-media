@@ -153,7 +153,7 @@ class Webcam extends Component {
     }
   }
 
-  captureBlob(cb) {
+  captureBlob(cb = () => {}) {
     const { captureFormat } = this.props;
     const canvas = this.captureCanvas()
     if (canvas) {
