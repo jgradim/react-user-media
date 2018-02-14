@@ -94,11 +94,7 @@ class Webcam extends Component {
       (stream) => {
         const video = this._video;
 
-        if (window.URL) {
-          video.src = window.URL.createObjectURL(stream);
-        } else {
-          video.src = stream;
-        }
+        video.srcObject = stream;
 
         this._mediaStream = stream;
 
