@@ -66,32 +66,18 @@ class Webcam extends Component {
   //---------------------------------------------------------------------------
   // External methods
   //---------------------------------------------------------------------------
-
   _hasGetUserMedia() {
-    return !!(
-      navigator.getUserMedia ||
-      navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia ||
-      navigator.msGetUserMedia
-    );
+    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
   }
 
   _requestUserMedia() {
-    navigator.getUserMedia = (
-      navigator.getUserMedia ||
-      navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia ||
-      navigator.msGetUserMedia
-    );
-
     const constraints = {
       video: this.props.video,
       audio: this.props.audio,
     };
 
-    navigator.getUserMedia(
-      constraints,
-      (stream) => {
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then((stream) => {
         const video = this._video;
 
         video.srcObject = stream;
@@ -104,12 +90,10 @@ class Webcam extends Component {
         });
 
         this.props.onSuccess();
-      },
-      (error) => {
+      })
+      .catch((error) => {
         this.props.onFailure(error);
-      }
-    );
-
+      });
   }
 
   _getCanvas() {
